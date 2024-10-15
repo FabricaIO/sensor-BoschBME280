@@ -5,7 +5,7 @@
 /// @param I2CBus A pointer to the I2C bus to use
 /// @param ConfigFile The file name to store settings in
 BoschBME280::BoschBME280(int Address, TwoWire* I2CBus, String ConfigFile) {
-	config_path = "/settings/act/" + ConfigFile;
+	config_path = "/settings/sen/" + ConfigFile;
 	address = Address;
 	i2cbus = I2CBus;
 }
