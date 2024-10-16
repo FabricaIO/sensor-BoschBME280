@@ -11,14 +11,14 @@ BoschBME280::BoschBME280(int Address, TwoWire* I2CBus, String ConfigFile) {
 }
 
 bool BoschBME280::begin() {
-	values.resize(4);
 	Description.id = 7;
 	Description.name = "Bosch BME280";
-	Description.type = "enviromental sensor";
+	Description.type = "environmental sensor";
 	Description.parameterQuantity = 4;
 	Description.parameters = {"Temperature", "Pressure", "Altitude", "Humidity"};
 	Description.units = {"C", "hPa", "m", "%RH"};
 	Description.version = "0.5";
+	values.resize(Description.parameterQuantity);
 	bool result = false;
 	// Create settings directory if necessary
 	if (!checkConfig(config_path)) {
