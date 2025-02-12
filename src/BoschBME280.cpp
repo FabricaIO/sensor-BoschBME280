@@ -11,7 +11,6 @@ BoschBME280::BoschBME280(int Address, TwoWire* I2CBus, String ConfigFile) {
 }
 
 bool BoschBME280::begin() {
-	Description.id = 7;
 	Description.name = "Bosch BME280";
 	Description.type = "environmental sensor";
 	Description.parameterQuantity = 4;
