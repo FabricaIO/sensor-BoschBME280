@@ -1,0 +1,57 @@
+{
+	"name": "Fabrica-IO Sensor BME280 temperature adn humidity",
+	"version": "0.5.0",
+	"description": "I2C Bosch BME280 temperature and humidity",
+	"keywords": "Fabrica-IO, sensor, temperature, humidity, i2c",
+	"repository":
+	{
+	  "type": "git",
+	  "url": "https://github.com/FabricaIO/sensor-DFAirquality.git"
+	},
+	"authors":
+	[
+	  {
+		"name": "Sam Groveman",
+		"email": "SamGroveman@outlook.com",
+		"url": "https://github.com/FabricaIO"
+	  }
+	],
+	"dependencies": {
+		"Adafruit BME280 Library": "adafruit/Adafruit BME280 Library@^2.2.4"
+	  },
+	"license": "GPLv3",
+	"homepage": "https://github.com/FabricaIO",
+	"frameworks": "arduino",
+	"platforms": "*",
+	"fabrica-io" : {
+		"name": "BME280Temp",
+		"type": 0,
+		"category": "environmental sensor",
+		"libname": "BoschBME280",
+		"includes": ["BoschBME280"],
+		"description": "I2C Bosch BME280 temperature and humidity",
+		"constructor":
+		[
+			[
+				{
+					"name": "Address",
+					"type": "uint8_t",
+					"description": "The I2C address",
+					"default": "0x19"
+				},
+				{
+					"name": "I2C_bus",
+					"type": "TwoWire*",
+					"description": "The I2C bus",
+					"default": "&Wire"
+				},
+				{
+					"name": "ConfigFile",
+					"type": "String",
+					"description": "The config file name",
+					"default": "BME280.json"
+				}
+			]
+		]
+	}
+  }
