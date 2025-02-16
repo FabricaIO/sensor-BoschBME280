@@ -1,5 +1,5 @@
 {
-	"name": "Fabrica-IO Sensor BME280 temperature adn humidity",
+	"name": "sensor-BoschBME280",
 	"version": "0.5.0",
 	"description": "I2C Bosch BME280 temperature and humidity",
 	"keywords": "Fabrica-IO, sensor, temperature, humidity, i2c",
