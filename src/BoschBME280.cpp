@@ -47,6 +47,7 @@ String BoschBME280::getConfig() {
 	// Allocate the JSON document
 	JsonDocument doc;
 	// Assign current values
+	doc["Name"] = Description.name;
 	doc["pressureSeaLevel"] = current_config.pressureSeaLevel;
 
 	// Create string to hold output
@@ -72,6 +73,7 @@ bool BoschBME280::setConfig(String config, bool save) {
 		return false;
 	}
 	// Assign loaded values
+	Description.name = doc["Name"].as<String>();
 	current_config.pressureSeaLevel = doc["pressureSeaLevel"].as<double>();
 	if (save) {
 		return saveConfig(config_path, config);
