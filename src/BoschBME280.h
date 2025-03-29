@@ -17,7 +17,7 @@
 /// @brief Device for suing BME280 sensor
 class BoschBME280 : public Sensor {
 	public:
-		BoschBME280(int Address = 0x77, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
+		BoschBME280(String Name, int Address = 0x77, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
 		bool begin();
 		bool takeMeasurement();
 		String getConfig();

@@ -1,17 +1,17 @@
 #include "BoschBME280.h"
 
 /// @brief Creates an Adafruit280 device
+/// @param Name The name of the device
 /// @param Address The I2C address to use
 /// @param I2CBus A pointer to the I2C bus to use
 /// @param ConfigFile The file name to store settings in
-BoschBME280::BoschBME280(int Address, TwoWire* I2CBus, String ConfigFile) {
+BoschBME280::BoschBME280(String Name, int Address, TwoWire* I2CBus, String ConfigFile) : Sensor(Name) {
 	config_path = "/settings/sen/" + ConfigFile;
 	address = Address;
 	i2cbus = I2CBus;
 }
 
 bool BoschBME280::begin() {
-	Description.name = "Bosch BME280";
 	Description.type = "environmental sensor";
 	Description.parameterQuantity = 4;
 	Description.parameters = {"Temperature", "Pressure", "Altitude", "Humidity"};
