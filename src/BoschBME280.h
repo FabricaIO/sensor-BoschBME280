@@ -14,10 +14,11 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 
-/// @brief Device for suing BME280 sensor
+/// @brief Device for using BME280 sensor
 class BoschBME280 : public Sensor {
 	public:
 		BoschBME280(String Name, int Address = 0x77, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
+		BoschBME280(String Name, int Address = 0x77, int SDA_pin, int SCL_pin, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
 		bool begin();
 		bool takeMeasurement();
 		String getConfig();
@@ -35,6 +36,9 @@ class BoschBME280 : public Sensor {
 
 		/// @brief I2C address of device
 		int address;
+
+		/// @brief I2C pins used
+		int sda = -1, scl = -1;
 
 		/// @brief I2C bus to use
 		TwoWire* i2cbus;

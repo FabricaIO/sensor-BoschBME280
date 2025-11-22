@@ -1,6 +1,6 @@
 #include "BoschBME280.h"
 
-/// @brief Creates an Adafruit280 device
+/// @brief Creates an BoschBME280 device
 /// @param Name The name of the device
 /// @param Address The I2C address to use
 /// @param I2CBus A pointer to the I2C bus to use
@@ -9,6 +9,21 @@ BoschBME280::BoschBME280(String Name, int Address, TwoWire* I2CBus, String Confi
 	config_path = "/settings/sen/" + ConfigFile;
 	address = Address;
 	i2cbus = I2CBus;
+}
+
+/// @brief Creates an BoschBME280 device
+/// @param Name The name of the device
+/// @param Address The I2C address to use
+/// @param SDA_pin SDA pin to use for I2C
+/// @param SCL_pin SCL pin to use for I2C
+/// @param I2CBus A pointer to the I2C bus to use
+/// @param ConfigFile The file name to store settings in
+BoschBME280::BoschBME280(String Name, int Address, int SDA_pin, int SCL_pin, TwoWire* I2CBus, String ConfigFile) : Sensor(Name) {
+	config_path = "/settings/sen/" + ConfigFile;
+	address = Address;
+	i2cbus = I2CBus;
+	sda = SDA_pin;
+	scl = SCL_pin;
 }
 
 bool BoschBME280::begin() {
@@ -26,6 +41,11 @@ bool BoschBME280::begin() {
 	} else {
 		// Load settings
 		result = setConfig(Storage::readFile(config_path), false);
+	}
+	if (result) {
+		if (sda >= 0 && scl >= 0) {
+			result = i2cbus->begin(sda, scl);
+		}
 	}
 	if (result) {
 		result = bme.begin(address, i2cbus);
