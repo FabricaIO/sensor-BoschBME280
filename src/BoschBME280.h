@@ -17,8 +17,8 @@
 /// @brief Device for using BME280 sensor
 class BoschBME280 : public Sensor {
 	public:
-		BoschBME280(String Name, int Address = 0x77, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
-		BoschBME280(String Name, int Address = 0x77, int SDA_pin, int SCL_pin, TwoWire* I2CBus = &Wire, String ConfigFile = "BME280.json");
+		BoschBME280(String Name, TwoWire* I2CBus = &Wire, int Address = 0x77, String ConfigFile = "BME280.json");
+		BoschBME280(String Name, int SDA_pin = 21, int SCL_pin = 22, TwoWire* I2CBus = &Wire, int Address = 0x77, String ConfigFile = "BME280.json");
 		bool begin();
 		bool takeMeasurement();
 		String getConfig();
@@ -28,7 +28,7 @@ class BoschBME280 : public Sensor {
 		/// @brief Soil moisture sensor configuration
 		struct {
 			/// @brief The value air pressure as sea level
-			double pressureSeaLevel;
+			double pressureSeaLevel = 1013.25;
 		} current_config;
 
 		/// @brief Adafruit BEM280 device

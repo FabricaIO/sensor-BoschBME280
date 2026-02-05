@@ -34,16 +34,48 @@
 		[
 			[
 				{
-					"name": "Address",
-					"type": "uint8_t",
-					"description": "The I2C address",
-					"default": "0x19"
-				},
-				{
 					"name": "I2C_bus",
 					"type": "TwoWire*",
 					"description": "The I2C bus",
 					"default": "&Wire"
+				},
+				{
+					"name": "Address",
+					"type": "uint8_t",
+					"description": "The I2C address",
+					"default": "0x77"
+				},
+				{
+					"name": "ConfigFile",
+					"type": "String",
+					"description": "The config file name",
+					"default": "BME280.json"
+				}
+			],
+			[
+				{
+					"name": "SDA_pin",
+					"type": "int",
+					"description": "The SDA pin on the I2C bus",
+					"default": "21"
+				},
+				{
+					"name": "SCL_pin",
+					"type": "int",
+					"description": "The SCL pin on the I2C bus",
+					"default": "22"
+				},
+				{
+					"name": "I2C_bus",
+					"type": "TwoWire*",
+					"description": "The I2C bus the sensor is connected to",
+					"default": "&Wire"
+				},
+				{
+					"name": "Address",
+					"type": "uint8_t",
+					"description": "The I2C address",
+					"default": "0x77"
 				},
 				{
 					"name": "ConfigFile",

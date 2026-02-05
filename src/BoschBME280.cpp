@@ -37,7 +37,7 @@ bool BoschBME280::begin() {
 	// Create settings directory if necessary
 	if (!checkConfig(config_path)) {
 		// Set defaults
-		result = setConfig(R"({"pressureSeaLevel": 1013.25})", true);
+		result = setConfig(getConfig(), true);
 	} else {
 		// Load settings
 		result = setConfig(Storage::readFile(config_path), false);
